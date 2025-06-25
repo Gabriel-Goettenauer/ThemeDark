@@ -10,15 +10,12 @@ interface ThemedButtonProps extends TouchableOpacityProps {
 
 const ThemedButton: React.FC<ThemedButtonProps> = ({ title, onPress, style, textStyle, ...rest }) => {
   const { currentTheme } = useTheme();
-
-  // CORREÇÃO: Usar StyleSheet.flatten para combinar os estilos do botão.
   const buttonCombinedStyle = StyleSheet.flatten([
     styles.button,
     { backgroundColor: currentTheme.primaryButtonColor },
     style,
   ]);
 
-  // CORREÇÃO: Usar StyleSheet.flatten para combinar os estilos do texto do botão.
   const textCombinedStyle = StyleSheet.flatten([
     styles.buttonText,
     { color: currentTheme.primaryButtonTextColor },
@@ -27,12 +24,12 @@ const ThemedButton: React.FC<ThemedButtonProps> = ({ title, onPress, style, text
 
   return (
     <TouchableOpacity
-      style={buttonCombinedStyle} // Passa o estilo combinado e plano para o botão
+      style={buttonCombinedStyle} 
       onPress={onPress}
-      {...rest} // ESSA LINHA É CRÍTICA para que `testID` (usado nos testes) funcione
+      {...rest}
     >
       <Text
-        style={textCombinedStyle} // Passa o estilo combinado e plano para o texto
+        style={textCombinedStyle} 
       >
         {title}
       </Text>

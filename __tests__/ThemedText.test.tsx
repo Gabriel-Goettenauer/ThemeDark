@@ -5,7 +5,7 @@ import ThemedText from '../src/components/ThemedText';
 import { ThemeProvider, lightTheme, darkTheme } from '../src/context/ThemeContext';
 import { Appearance, TextStyle, StyleSheet, Platform, Dimensions, NativeModules } from 'react-native';
 
-// Mock abrangente de react-native para ambiente Jest
+
 jest.mock('react-native', () => ({
   Platform: {
     OS: 'ios',
@@ -16,8 +16,6 @@ jest.mock('react-native', () => ({
   },
   StyleSheet: {
     create: jest.fn((styles) => styles),
-    // CORREÇÃO: Este mock de flatten é crucial. Ele simula como o StyleSheet.flatten
-    // combinaria arrays de estilos em um único objeto.
     flatten: jest.fn((style) => {
       if (Array.isArray(style)) {
         return style.reduce((acc, current) => ({ ...acc, ...current }), {});
@@ -26,7 +24,7 @@ jest.mock('react-native', () => ({
     }),
   },
   Appearance: {
-    getColorScheme: jest.fn(() => 'light'), // Padrão 'light' no mock global
+    getColorScheme: jest.fn(() => 'light'),
     addChangeListener: jest.fn(() => ({ remove: jest.fn() })),
   },
   View: 'View',
@@ -63,10 +61,9 @@ describe('ThemedText', () => {
   // Garante que o mock do tema é resetado para 'light' antes de CADA teste
   beforeEach(() => {
     (Appearance.getColorScheme as jest.Mock).mockReturnValue('light');
-    jest.clearAllMocks(); // Limpa chamadas de mocks entre os testes
+    jest.clearAllMocks(); 
   });
 
-  // Restaura os mocks originais após CADA teste
   afterEach(() => {
     jest.restoreAllMocks();
   });
@@ -84,7 +81,7 @@ describe('ThemedText', () => {
   });
 
   it('deve renderizar o texto com as cores do tema escuro quando o tema é escuro', () => {
-    // Sobrescreve o mock apenas para este teste
+   
     (Appearance.getColorScheme as jest.Mock).mockReturnValue('dark');
 
     const { getByText } = render(
@@ -108,8 +105,8 @@ describe('ThemedText', () => {
 
     const textElement = getByText('Texto Estilizado');
     expect(textElement).toHaveStyle({
-      color: lightTheme.textColor, // A cor do tema é aplicada
-      ...estiloPersonalizado,     // E os estilos personalizados são mesclados
+      color: lightTheme.textColor, 
+      ...estiloPersonalizado,     
     });
   });
 });

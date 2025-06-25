@@ -10,8 +10,6 @@ interface ThemedTextProps extends TextProps {
 const ThemedText: React.FC<ThemedTextProps> = ({ style, children, ...rest }) => {
   const { currentTheme } = useTheme();
   
-  // CORREÇÃO: Usar StyleSheet.flatten para combinar os estilos.
-  // Isso garante que o estilo final seja um objeto plano, como o toHaveStyle espera.
   const combinedStyle = StyleSheet.flatten([
     { color: currentTheme.textColor },
     style,
@@ -19,7 +17,7 @@ const ThemedText: React.FC<ThemedTextProps> = ({ style, children, ...rest }) => 
 
   return (
     <Text
-      style={combinedStyle} // Passa o estilo combinado e plano
+      style={combinedStyle} 
       {...rest}
     >
       {children}
