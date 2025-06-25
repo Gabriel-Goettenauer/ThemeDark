@@ -1,4 +1,3 @@
-// __tests__/ThemedText.test.tsx
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import ThemedText from '../src/components/ThemedText';

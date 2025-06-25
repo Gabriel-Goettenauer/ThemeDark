@@ -16,7 +16,7 @@ jest.mock('react-native', () => ({
     flatten: jest.fn((style) => style),
   },
   Appearance: {
-    getColorScheme: jest.fn(), // Mock para controlar o valor retornado
+    getColorScheme: jest.fn(), 
     addChangeListener: jest.fn(() => ({ remove: jest.fn() })),
   },
   View: 'View',

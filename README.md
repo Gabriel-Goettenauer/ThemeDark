@@ -42,3 +42,19 @@ Ambos os tipos de testes são cruciais para uma estratégia de teste robusta em 
 
 
 
+
+## Como Instalar as Dependências
+
+Primeiro, remova quaisquer instalações antigas e caches para garantir uma instalação limpa:
+
+```bash
+rm -rf node_modules
+rm -f yarn.lock
+npm cache clean --force
+
+yarn install
+
+npx expo start
+
+## Como Aplicar os testes
+ yarn test
