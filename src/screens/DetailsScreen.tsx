@@ -61,15 +61,15 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({ navigation }) => {
       </ThemedText>
 
       <ThemedText style={styles.sectionTitle}>Exemplo de Botões</ThemedText>
-      <ThemedButton title="Botão de Ação 1" onPress={() => alert('Ação 1!')} />
-      <ThemedButton title="Botão de Ação 2" onPress={() => alert('Ação 2!')} />
+      <ThemedButton title="Pergunta 1" onPress={() => alert('Ação 1!')} />
+      <ThemedButton title="Pergunta 2" onPress={() => alert('Ação 2!')} />
 
       <ThemedText style={styles.sectionTitle}>Conteúdo Adicional</ThemedText>
       <ThemedText style={styles.paragraph}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Prefere tema claro ?
       </ThemedText>
       <ThemedText style={styles.paragraph}>
-        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+       Prefere tema escuro ?
       </ThemedText>
     </ScrollView>
   );

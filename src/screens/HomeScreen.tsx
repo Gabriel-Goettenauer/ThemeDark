@@ -1,6 +1,6 @@
 // src/screens/HomeScreen.tsx
 import React, { useLayoutEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native'; 
 import { StackScreenProps } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -26,7 +26,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       },
       title: 'Minha Aplicação Temática',
       headerRight: () => (
-        <TouchableOpacity onPress={toggleTheme} style={{ marginRight: 15 }}>
+        <TouchableOpacity
+          onPress={toggleTheme}
+          style={{ marginRight: 15 }}
+          data-testid="theme-toggle-button" 
+        >
           <Ionicons
             name={themeName === 'light' ? 'moon-outline' : 'sunny-outline'}
             size={24}
@@ -55,13 +59,26 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       textAlign: 'center',
       marginBottom: 30,
     },
+   
+    image: {
+      width: 250, 
+      height: 150, 
+      marginBottom: 30, 
+      borderRadius: 75, 
+      resizeMode: 'contain', 
+    },
   });
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../../image.png')} 
+        style={styles.image}
+      />
+
       <ThemedText style={styles.title}>Bem-vindo!</ThemedText>
       <ThemedText style={styles.description}>
-        Esta é a tela inicial da sua aplicação com gerenciamento de tema.
+       Aplicação com gerenciamento de tema.
         Alterne entre os modos claro e escuro usando o botão no cabeçalho.
       </ThemedText>
 
@@ -70,6 +87,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         onPress={() => navigation.navigate('Details')}
       />
 
+      <ThemedButton
+        title="Em breve"
+        onPress={() => console.log('Outro botão clicado!')}
+      />
     </View>
   );
 };
